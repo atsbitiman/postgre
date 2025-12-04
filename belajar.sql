@@ -24,3 +24,63 @@ values ('P0003','Mie Ayam Ceker', 20000, 100),
 select * from products
 
 select id,name, price, quantity from products
+
+alter table products
+add primary key (id)
+
+select id,name, price, quantity
+from products
+where quantity = 0
+
+select * from products
+where id = 'P0001'
+
+create type product_category as enum('Makanan','Minuman','Lain - lain')
+
+alter table products
+add column category product_category;
+
+update products
+set category = 'Makanan'
+where id = 'P0001';
+
+select * from products;
+
+update products
+set category = 'Makanan', description = 'Mie Ayam Ceker'
+where id = 'P0003';
+
+update products
+set category = 'Makanan'
+where id = 'P0002';
+
+update products
+set category = 'Makanan'
+where id = 'P0004';
+
+update products
+set category = 'Makanan'
+where id = 'P0005';
+
+update products
+set description = 'Mie Ayam Spesial'
+where id = 'P0004'
+
+update products
+set description = 'Mie Ayam + Ceker'
+where id = 'P0003'
+
+update products
+set price = price + 5000
+where id= 'P0004';
+
+insert into products(id,name,price,quantity,category)
+values ('P0009','Contoh',10000,'100','Minuman');
+
+delete from products
+where id = 'P0009';
+
+select id as Kode,
+        price as Harga,
+        description as Deskripsi
+from products;
