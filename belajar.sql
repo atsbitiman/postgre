@@ -84,3 +84,36 @@ select id as Kode,
         price as Harga,
         description as Deskripsi
 from products;
+
+select * from products
+where price >= 15000;
+
+select * from products;
+
+select * from products
+where price > 15000;
+
+insert into products(id,name, price, quantity, category)
+values ('P0007','Es Campur',20000,100,'Minuman'),
+       ('P0008','Jus Jeruk',15000,100,'Minuman');
+
+update products
+set id = 'P0006'
+where name = 'Es Teh Tawar'
+
+select * from products
+where price > 15000 or category = 'Makanan'
+
+select * from products
+where name like '%Mie%';
+
+select * from products
+where description is not null;
+
+select * from products ;
+
+select * from products
+where price between 10000 and 15000
+
+select * from products
+where category not in ('Makanan', 'Minuman');
