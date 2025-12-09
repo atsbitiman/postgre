@@ -117,3 +117,29 @@ where price between 10000 and 15000
 
 select * from products
 where category not in ('Makanan', 'Minuman');
+
+select * from products
+order by price asc, price desc
+
+select * from products
+where price > 0
+order by price asc, id desc
+limit 5;
+
+select * from products
+where price > 0
+order by price asc , id desc
+limit 2 offset 2;
+
+select category from products;
+
+select distinct category from products;
+
+select price from products;
+
+select distinct price from products;
+
+select 10 + 10 as hasil;
+
+select id, price/1000 as price_in_k from products
+order by id asc;
