@@ -116,3 +116,93 @@ where id in ('P0007','P0008','P0006');
 
 select * from products
 join categories on products.id_category = categories.id;
+
+create table orders
+(
+    id serial not null primary key,
+    total int not null,
+    order_date timestamp not null default current_timestamp
+);
+
+create table order_details (
+    id_product varchar(10) not null,
+    id_order int not null,
+    price int not null,
+    quantity int not null,
+    primary key(id_product,id_order)
+);
+
+alter table order_details
+add constraint fk_order_detail_product foreign key (id_product) references products (id);
+
+alter table order_details
+add constraint fk_orders_detail_order foreign key(id_order) references orders (id);
+
+insert into orders(total)
+values (1),
+       (2),
+       (3);
+
+select * from orders;
+
+update orders
+set total = 1
+where id = 2;
+
+update orders
+set total = 1
+where id = 3;
+
+insert into order_details(id_product,id_order,price,quantity)
+values ('P0001',1,1000,2),
+       ('P0002',1,1000,2),
+       ('P0003',1,1000,2);
+
+insert into order_details(id_product,id_order,price,quantity)
+values ('P0004',2,1000,2),
+       ('P0006',2,1000,2),
+       ('P0007',2,1000,2);
+
+insert into order_details(id_product,id_order,price,quantity)
+values ('P0001',3,1000,2),
+       ('P0004',3,1000,2),
+       ('P0005',3,1000,2);
+
+select * from order_details;
+
+select * from orders
+join order_details on order_details.id_order = orders.id
+join products on order_details.id_product = products.id;
+
+-- INNER JOIN --
+select * from categories
+inner join products on products.id_category = categories.id;
+
+select * from categories
+inner join products on categories.id = products.id_category;
+
+select * from products
+inner join categories on products.id_category = categories.id;
+
+insert into categories(id,name)
+values ('C0003','Gadget'),
+       ('C0004','Laptop'),
+       ('C0005','Pulsa');
+
+select * from categories;
+
+insert into products(id,name,price,quantity)
+values ('X0001','Contoh 1',10000,100),
+       ('X0002','Contoh 2',10000,100);
+
+-- LEFT JOIN --
+select * from categories
+left join products on products.id_category = categories.id;
+
+-- RIGHT JOIN --
+select * from categories
+right join products on products.id_category = categories.id;
+
+--FULL JOIN--
+select * from categories
+full join products on products.id_category = categories.id;
