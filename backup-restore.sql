@@ -1,0 +1,2 @@
+-- BACKUP DATABASE --
+-- https://www.postgresql.org/docs/current/app-pgdump.html
